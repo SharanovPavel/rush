@@ -9,9 +9,11 @@ Ruby offers flexible and short structures which simplify coding. This library ad
 Ruby:
 ```ruby
 5.times { puts "Hello" }
+10.times { |i| puts "Hello #{i}" }
 ```
 
 C#:
 ```csharp
 5.Times( () => Console.WriteLine( "Hello" ) );
+10.Times( i => Console.WriteLine( "Hello, {0}", i ) );
 ```
