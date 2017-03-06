@@ -3,7 +3,7 @@
 
 namespace Tests.Loops
 {
-    using System;
+    using System.Collections.Generic;
     using NUnit.Framework;
     using SlavikDev.Rush.Loops;
 
@@ -15,20 +15,22 @@ namespace Tests.Loops
         [Test]
         public void TestTimesNegative()
         {
-            5.Times( () => Console.WriteLine( "Hello" ) );
             AssertSum( -10, 0 );
+            AssertSumWithIndex( -10, 0 );
         }
 
         [Test]
         public void TestTimesPositive()
         {
             AssertSum( 5, 5 );
+            AssertSumWithIndex( 5, 5 );
         }
 
         [Test]
         public void TestTimesZero()
         {
             AssertSum( 0, 0 );
+            AssertSumWithIndex( 0, 0 );
         }
 
         #endregion
@@ -41,6 +43,22 @@ namespace Tests.Loops
             times.Times( () => ++sum );
 
             Assert.AreEqual( expected, sum );
+        }
+
+        private static void AssertSumWithIndex( int times, int expected )
+        {
+            var sum = 0;
+            var indexes = new List<int>();
+            times.Times( index => { ++sum; indexes.Add( index ); } );
+
+            Assert.AreEqual( expected, sum );
+            Assert.AreEqual( times < 0 ? 0 : times, indexes.Count );
+            var expected_index = 0;
+            foreach ( var index in indexes )
+            {
+                Assert.AreEqual( expected_index, index );
+                ++expected_index;
+            }
         }
 
         #endregion
