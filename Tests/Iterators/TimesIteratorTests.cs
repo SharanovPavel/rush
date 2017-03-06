@@ -1,14 +1,15 @@
 ﻿// Copyright (C) 2017 Viacheslav Shynkarenko.
 // All Rights Reserved.
 
-namespace Tests.Loops
+namespace Tests.Iterators
 {
     using System.Collections.Generic;
+    using Common;
     using NUnit.Framework;
-    using SlavikDev.Rush.Loops;
+    using SlavikDev.Rush.Iterators;
 
     [TestFixture]
-    public sealed class TimesLoopTests
+    public sealed class TimesIteratorTests
     {
         #region Tests
 
@@ -53,12 +54,7 @@ namespace Tests.Loops
 
             Assert.AreEqual( expected, sum );
             Assert.AreEqual( times < 0 ? 0 : times, indexes.Count );
-            var expected_index = 0;
-            foreach ( var index in indexes )
-            {
-                Assert.AreEqual( expected_index, index );
-                ++expected_index;
-            }
+            AssertIterator.IndexesGrow( 0, indexes );
         }
 
         #endregion

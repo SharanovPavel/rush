@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Loops\TimesLoopTests.cs" />
+    <Compile Include="Iterators\Common\AssertIterator.cs" />
+    <Compile Include="Iterators\EachIteratorTests.cs" />
+    <Compile Include="Iterators\TimesIteratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
